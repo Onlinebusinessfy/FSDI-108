@@ -5,11 +5,15 @@
     background-color: white;
     display: inline-block;
     width: 250px;
-    height: 340px;
+    height: 352px;
+}
+
+.product img{
+    width: 248px;
 }
 
 .product h3{
-    color: tomato;
+    color: rgb(45, 45, 45);
 }
 
 .price-button{
@@ -20,4 +24,21 @@
 
 .prices{
     margin-bottom: 5px;
+}
+
+.product .prices .total{
+    margin-right: 25px;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(16, 30, 107);
+}
+
+.product .prices .unit{
+    color: #5a5a5a;
+}
+
+.product .parent{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
 }

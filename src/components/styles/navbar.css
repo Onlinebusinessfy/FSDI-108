@@ -18,3 +18,7 @@ a{
 a:hover{
     color: red;
 }
+
+nav{
+    background-color: rgb(85, 95, 145);
+}
