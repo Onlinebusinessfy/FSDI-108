@@ -1,13 +1,13 @@
-.navbar-footer{
+.title-footer{
     padding: 5px;
     display: flex;
     justify-content: space-around;
     height: 60px;
     align-items: center;
-    background-color: beige;
+    background-color: hwb(197 33% 43% / 0.822);
 }
 
-.navbar-footer a{
+.title-footer a{
     text-transform: uppercase;
     font-size: 18px;
     color: rgb(85, 55, 0);
@@ -16,6 +16,6 @@
     text-decoration: none;
 }
 
-.navbar-footer a:hover{
+.title-footer a:hover{
     color: rgb(17, 0, 255);
 }

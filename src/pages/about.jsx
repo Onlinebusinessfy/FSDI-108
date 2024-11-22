@@ -16,7 +16,7 @@ function About(){
                 <br/>
                 {
                     !visibleEmail
-                        ? <button onClick={showEmail} className="btn btn-outline-primary">Show Email</button>:null
+                        ? <button onClick={showEmail} className="btn btn-outline-dark btn-distance">Show Email</button>:null
                 }
             </div>
         </div>

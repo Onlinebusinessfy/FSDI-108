@@ -70,13 +70,23 @@ var catalog=[
         "image": "https://static.vecteezy.com/system/resources/previews/029/200/216/non_2x/watermelon-transparent-background-free-png.png",
         "_id": "55678"
     }
-]
+];
+
+var categories=['Fruit', 'Vegetable'];
+
 class DataService{
     getProducts(){
         // todo: call the server to retrieve products
         
         // hardcore values
         return catalog;
+    }
+
+    getCategories(){
+        //todo: call the server
+
+        // hardcoded values
+        return categories;
     }
 }
 

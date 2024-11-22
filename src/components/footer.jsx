@@ -3,14 +3,9 @@ import "./styles/footer.css"
 function Footer(){
     return(
         <div>
-            <nav>
-                <div className="navbar-footer">
-                    <a href="">Home</a>
-                    <a href="">About</a>
-                    <a href="">Contact</a>
-                    <a href="">Created by: Samuel Dominguez</a>
-                </div>
-            </nav>
+            <div className="title-footer">
+                <h2>Created by: Samuel Dominguez</h2>
+            </div>
         </div>
     );
 }
