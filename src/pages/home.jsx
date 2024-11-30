@@ -10,7 +10,7 @@ function Home(){
                     <h1>Welcome to my website!</h1>
                 </div>
                 <div className="button-position">
-                    <Link class="nav-link active" aria-current="page" to="/catalog">
+                    <Link className="nav-link active" aria-current="page" to="/catalog">
                         <button className="btn btn-lg btn-success">Check out this awesome offers!</button>
                     </Link>
                 </div>

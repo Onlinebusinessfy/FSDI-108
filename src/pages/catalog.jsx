@@ -6,6 +6,7 @@ import dataService from "../services/data.Service";
 function Catalog() {
     const [catalog, setCatalog]=useState([]);
     const [categories, setCategories]=useState([]);
+    const [selectedCategory, setSelectedCategory] = useState("");
 
     function loadData(){
         let productList=dataService.getProducts();
@@ -20,6 +21,14 @@ function Catalog() {
         loadData();
     }, []);
 
+    function onCategorySelected(category){
+        setSelectedCategory(category);
+    }
+
+    function clearFilter(){
+        setSelectedCategory("");
+    }
+
     // if catalog is empty
     if(!catalog.length) return "Loading...";
 
@@ -30,11 +39,14 @@ function Catalog() {
         </div>
         
         <div className="filters">
-            {categories.map(cat => <button className="btn btn-sm btn-outline-success expand-btn">{cat}</button>)}
+            <button onClick={clearFilter} className="btn btn-sm btn-outline-success expand-btn">All</button>
+            {categories.map(cat => <button onClick={()=>onCategorySelected(cat)} key={cat} className="btn btn-sm btn-outline-success expand-btn">{cat}</button>)}
         </div>
 
-        <div>
-            {catalog.map(prod => <Product data={prod}></Product>)}
+        <div className="page">
+            {catalog
+            .filter(prod => !selectedCategory || prod.category === selectedCategory)
+            .map(prod => <Product data={prod} key={prod._id}></Product>)}
         </div>
     </div>
     );
