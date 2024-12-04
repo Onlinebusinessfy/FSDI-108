@@ -6,6 +6,17 @@ import GlobalContext from "../context/globalContext";
 function Navbar(){
 
     const user=useContext(GlobalContext).user;
+    const cart=useContext(GlobalContext).cart;
+
+    function getProdCount(){
+        let total=0;
+        for(let i=0;i<cart.length;i++){
+            let prod =cart[i];
+            total+=prod.quantity;
+        }
+
+        return total;
+    }
 
     return(
         <div>
@@ -40,9 +51,12 @@ function Navbar(){
 
                         <div className="d-flex" role="search">
                             <div className="btn btn-outline-light me-3">
-                                {user.id} - {user.name}
+                                {user.name}
                             </div>
-                            <Link className="btn btn-outline-light me-2" to="/cart">View Cart</Link>
+                            <Link className="btn btn-outline-light me-2" to="/cart">
+                                <span class="badge text-bg-light me-1">{getProdCount()}</span>
+                                View Cart
+                            </Link>
                         </div>
 
                     </div>
