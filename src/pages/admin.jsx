@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./styles/admin.css"
 
 function Admin(){
-
+    const [allProducts, setallProducts]=useState([]);
+    const [allCoupons, setallCoupons]=useState([]);
     const[coupon, setCoupon]=useState({
         code:'', //not required
         discount:'',
@@ -37,7 +38,10 @@ function Admin(){
     }
 
     function saveCoupon(){
-        console.log(coupon)
+        console.log(coupon);
+        var copy=[...allCoupons];
+        copy.push(coupon);
+        setallCoupons(copy);
     }
 
     function handleProductInput(e){
@@ -46,11 +50,14 @@ function Admin(){
 
         let copy={...product};
         copy[name]=val;
-        setProduct(copy)
+        setProduct(copy);
     }
 
     function saveProduct(){
         console.log(product);
+        var copy=[...allProducts];
+        copy.push(product);
+        setallProducts(copy);
     }
 
     return(
@@ -72,7 +79,7 @@ function Admin(){
 
                     <div className="mb-3">
                         <label className="form-label">Image</label>
-                        <input type="image" className="form-control" onChange={handleProductInput} name="image"/>
+                        <input type="text" className="form-control" onChange={handleProductInput} name="image"/>
                     </div>
 
                     <div className="mb-3">
@@ -83,6 +90,15 @@ function Admin(){
                     <div className="mb-5 btn-container">
                         <button className="btn btn-outline-dark" onClick={saveProduct}>Save Product</button>
                     </div>
+
+                    <ul className="product-list">
+                        {allProducts.map(prod => 
+                            <li>
+                                <img className="prod-img" src={prod.image} alt="" />
+                                {prod.title} - ${parseFloat(prod.price).toFixed(2)}
+                            </li>
+                        )}
+                    </ul>
 
                 </div>
 
@@ -100,10 +116,13 @@ function Admin(){
                     <div className="mb-3 btn-container">
                         <button className="btn btn-outline-dark" onClick={saveCoupon}>Save Coupons</button>
                     </div>
-                    <div className="img-coupon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1041/1041885.png" alt="" />
-                    </div>
-
+                    <ul className="coupon-list">
+                        {allCoupons.map(cp => 
+                            <li className="coupon-item">
+                                {cp.code} - {cp.discount}%
+                            </li>
+                        )}
+                    </ul>
                 </div>
             </div>
         </div>

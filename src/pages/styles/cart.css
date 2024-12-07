@@ -48,3 +48,31 @@
     display: block;
     color: #b8c9dc;
 }
+
+.cart .parent{
+    display: flex;
+}
+
+.cart .list{
+    flex: 3;
+}
+
+.cart .side{
+    flex: 1;
+    background-color: white;
+    margin-right: 30px;
+    border: 1px solid #b8c9dc;
+    border-radius: 6px;
+    margin-top: 40px;
+    padding-top: 30px;
+}
+
+.cart .side h6{
+    font-size: 26px;
+    color: #b8c9dc;
+}
+
+.cart .side h5{
+    font-size: 28px;
+    color: #11596a;
+}
