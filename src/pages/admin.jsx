@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/admin.css"
+import dataService from "../services/data.Service";
 
 function Admin(){
     const [allProducts, setallProducts]=useState([]);
@@ -37,8 +38,11 @@ function Admin(){
         setCoupon(copy);
     }
 
-    function saveCoupon(){
+    async function saveCoupon(){
         console.log(coupon);
+
+        dataService.saveCoupon(coupon);
+
         var copy=[...allCoupons];
         copy.push(coupon);
         setallCoupons(copy);
@@ -53,12 +57,33 @@ function Admin(){
         setProduct(copy);
     }
 
-    function saveProduct(){
+    async function saveProduct(){
         console.log(product);
+
+        let fixedProd = {...product};
+        fixedProd.price=parseFloat(fixedProd.price)
+        let x= await dataService.saveProduct(fixedProd);
+        console.log(x);
+
         var copy=[...allProducts];
         copy.push(product);
         setallProducts(copy);
     }
+
+    async function loadProducts(){
+        let prods= await dataService.getProducts();
+        setallProducts(prods);
+    }
+
+    async function loadCoupons() {
+        let cps=await dataService.getCoupons();
+        setallCoupons(cps);
+    }
+
+    useEffect(() =>{
+        loadCoupons();
+        loadProducts();
+    },[]);
 
     return(
         <div className="admin page">
